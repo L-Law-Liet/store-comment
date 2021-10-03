@@ -3,6 +3,7 @@ package kz.edev.comment.controller;
 import kz.edev.comment.entity.Comment;
 import kz.edev.comment.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
@@ -16,8 +17,8 @@ public class CommentController {
     private CommentService commentService;
 
     @GetMapping("/{userId}")
-    public List<Comment> getByUserId(@PathVariable("userId") Long userId) {
-        return commentService.getByUserId(userId);
+    public ResponseEntity<?> getByUserId(@PathVariable("userId") Long userId) {
+        return ResponseEntity.ok(commentService.getByUserId(userId));
     }
 
     @PostMapping("")
