@@ -16,9 +16,9 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<?> getByUserId(@PathVariable("userId") Long userId) {
-        return ResponseEntity.ok(commentService.getByUserId(userId));
+    @GetMapping("/{profileId}")
+    public ResponseEntity<?> getByUserId(@PathVariable("profileId") Long profileId) {
+        return ResponseEntity.ok(commentService.getUserComments(profileId));
     }
 
     @PostMapping("")

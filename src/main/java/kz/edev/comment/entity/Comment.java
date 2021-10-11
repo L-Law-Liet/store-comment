@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "comments")
+@Table(name = "comment")
 @Setter
 @Getter
 @ToString
@@ -20,17 +20,6 @@ public class Comment {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @Column(name = "user_id")
-    private Long userId;
-
-    @Column(name = "product_id")
-    private Long productId;
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id", insertable = false, updatable = false)
-//    private User user;
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "product_id", insertable = false, updatable = false)
-//    private Product product;
+    private Long profile_id;
+    private Long product_id;
 }

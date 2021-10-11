@@ -1,5 +1,6 @@
 package kz.edev.comment.service.impl;
 import kz.edev.comment.entity.Comment;
+import kz.edev.comment.entity.UserComments;
 import kz.edev.comment.repository.CommentRepository;
 import kz.edev.comment.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,13 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     CommentRepository commentRepository;
 
-    public List<Comment> getByUserId(Long id){
-        return commentRepository.getByUserId(id);
+    public UserComments getUserComments(Long id){
+        List<Comment> comments = commentRepository.getByProfile_id(id);
+
+        UserComments userComments = new UserComments();
+        userComments.setComments(comments);
+
+        return userComments;
     }
 
     public Comment create(Comment comment){
