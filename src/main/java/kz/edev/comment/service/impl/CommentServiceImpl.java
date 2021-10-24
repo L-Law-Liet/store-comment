@@ -15,7 +15,7 @@ public class CommentServiceImpl implements CommentService {
     CommentRepository commentRepository;
 
     public UserComments getUserComments(Long id){
-        List<Comment> comments = commentRepository.getByProfile_id(id);
+        List<Comment> comments = commentRepository.getByProfileId(id);
 
         UserComments userComments = new UserComments();
         userComments.setComments(comments);

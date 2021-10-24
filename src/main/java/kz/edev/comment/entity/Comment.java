@@ -20,6 +20,7 @@ public class Comment {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    private Long profile_id;
-    private Long product_id;
+
+    private Long profileId;
+    private Long productId;
 }

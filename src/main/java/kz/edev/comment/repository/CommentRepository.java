@@ -1,5 +1,6 @@
 package kz.edev.comment.repository;
 
+
 import kz.edev.comment.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -8,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-    List<Comment> getByProfile_id(Long id);
+    List<Comment> getByProfileId(Long id);
 }
