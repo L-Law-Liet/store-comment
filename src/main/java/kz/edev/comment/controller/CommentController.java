@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
-import java.util.List;
+
 
 @RestController
 @RequestMapping("/comments")
@@ -19,6 +19,11 @@ public class CommentController {
     @GetMapping("/{profileId}")
     public ResponseEntity<?> getByUserId(@PathVariable("profileId") Long profileId) {
         return ResponseEntity.ok(commentService.getUserComments(profileId));
+    }
+
+    @GetMapping("/{profileId}/profile")
+    public ResponseEntity<?> getUserByProfileId(@PathVariable("profileId") Long profileId) {
+        return ResponseEntity.ok(commentService.getProfileById(profileId));
     }
 
     @PostMapping("")
