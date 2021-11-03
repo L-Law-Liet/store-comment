@@ -40,8 +40,12 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     @HystrixCommand(
-            fallbackMethod = "getUserByIdFallback"
-    )
+            fallbackMethod = "getUserByIdFallback",
+            threadPoolKey = "getUserById",
+            threadPoolProperties = {
+                    @HystrixProperty(name="coreSize", value="40"),
+                    @HystrixProperty(name="maxQueueSize", value="20"),
+            })
     public Profile getProfileById(Long id) {
         return restTemplate.getForObject("http://store-profile-service/profile/" + id, Profile.class);
     }
