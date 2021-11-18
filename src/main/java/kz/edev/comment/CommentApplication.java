@@ -1,5 +1,11 @@
 package kz.edev.comment;
 
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CredentialsProvider;
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.BasicCredentialsProvider;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -27,9 +33,20 @@ public class CommentApplication {
                 = new HttpComponentsClientHttpRequestFactory();
 //        requestFactory.setConnectTimeout(3000);
 
-        RestTemplate restTemplate = new RestTemplate(requestFactory);
+        CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
 
-        return restTemplate;
+		credentialsProvider.setCredentials(AuthScope.ANY,
+				new UsernamePasswordCredentials("rest-client", "p@ssword"));
+
+		HttpClient client = HttpClientBuilder
+				.create()
+				.setDefaultCredentialsProvider(credentialsProvider)
+				.build();
+
+		requestFactory.setHttpClient(client);
+
+
+        return new RestTemplate(requestFactory);
     }
 
     @Bean
