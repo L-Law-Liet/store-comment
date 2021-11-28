@@ -1,6 +1,7 @@
 package kz.edev.comment.service;
 
 import kz.edev.comment.entity.Comment;
+import kz.edev.comment.entity.Product;
 import kz.edev.comment.entity.Profile;
 import kz.edev.comment.entity.UserComments;
 import org.springframework.stereotype.Service;
